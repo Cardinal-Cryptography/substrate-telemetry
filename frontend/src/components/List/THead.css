@@ -17,7 +17,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 */
 
 .THead {
-  background: #393838;
+  background: var(--aleph-graphite-200);
 }
 
 .THeadCell {
@@ -32,7 +32,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 .THeadCell-sorted {
   cursor: pointer;
-  background: #e6007a;
+  background: var(--aleph-graphite-250);
   color: #fff;
 }
 

@@ -43,8 +43,8 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 }
 
 .Setting-on .Setting-switch {
-  background: #e6007a;
-  border-color: #e6007a;
+  background: var(--aleph-mint);
+  border-color: var(--aleph-mint);
 }
 
 .Setting-knob {
