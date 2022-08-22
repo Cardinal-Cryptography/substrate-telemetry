@@ -25,4 +25,16 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  --aleph-text-dark: #111B24;
+  --aleph-graphite-50: #0F171F;
+  --aleph-graphite-100: #111B24;
+  --aleph-graphite-150: #14202A;
+  --aleph-graphite-200: #16232E;
+  --aleph-graphite-250: #1B2B38;
+  --aleph-grey-1: #f3f5f7;
+  --aleph-grey-2: #E3E9EF;
+  --aleph-grey-3: #CFDAE3;
+  --aleph-grey-4: #2f4252;
+  --aleph-mint: #00EAC7;
+  --aleph-mint-dark: #00CCAB;
 }

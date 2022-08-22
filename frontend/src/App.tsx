@@ -130,7 +130,9 @@ export default class App extends React.Component<{}, {}> {
 
   public render() {
     const { timeDiff, subscribed, status, tab } = this.appState;
-    const chains = this.chains();
+    const chains = this.chains().filter(({ label }) => {
+      return label.startsWith('Aleph Zero');
+    });
     const subscribedData = subscribed
       ? this.appState.chains.get(subscribed)
       : null;

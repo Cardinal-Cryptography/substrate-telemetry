@@ -67,10 +67,18 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
   border: 1px solid black;
 }
 
+.AllChains-controls-sortby:hover {
+  background-color: var(--aleph-grey-1);
+}
+
+.AllChains-controls-sortby:active {
+  background-color: var(--aleph-grey-2);
+}
+
+
 .AllChains-controls-sortby-active {
-  background-color: #e6007a;
-  border-color: #e6007a;
-  color: white;
+  border-color: var(--aleph-mint-dark);
+  color: var(--aleph-mint-dark);
 }
 
 .AllChains-chains {
@@ -81,8 +89,8 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 .AllChains-chain {
   padding: 10px 10px;
-  background: rgb(220,220,220);
-  color: black;
+  background: var(--aleph-grey-1);
+  color: var(--aleph-text-dark);
   display: inline-flex;
   margin-right: 0.5em;
   margin-bottom: 0.5em;
@@ -95,6 +103,14 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
   justify-content: center;
 }
 
+.AllChains-chain:hover {
+  background: var(--aleph-grey-2);
+}
+
+.AllChains-chain:active {
+  background: var(--aleph-grey-3);
+}
+
 .AllChains-chain-highlighted-text {
   background-color: yellow;
   color: black;
@@ -105,7 +121,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
   align-items: center;
   justify-content: center;
   border-radius: 1em;
-  background: #8c8787;
+  background: var(--aleph-grey-4);
   color: #fff;
   font-weight: normal;
   font-size: 0.9em;
@@ -113,12 +129,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
   padding: 0.3em 0.5em;
 }
 
-.AllChains-chain-selected {
-  background: #e6007a;
-  color: white;
-}
-
-.AllChains-chain-selected .AllChains-node-count {
-  background: white;
-  color: #e6007a;
+.AllChains-chain-selected,
+.AllChains-chain-selected:hover {
+  color: var(--aleph-mint-dark);
 }

@@ -19,10 +19,8 @@ import { Types, Maybe, SortedCollection } from './common';
 import { Column } from './components/List';
 
 export const PINNED_CHAINS = {
-  // Kusama
-  '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe': 2,
-  // Polkadot
-  '0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3': 1,
+  // Aleph Zero Testnet
+  '0x05d5279c52c484cc80396535a316add7d47b1c5b9e0398dd1f584149341460c5': 1,
 };
 
 export function comparePinnedChains(a: string, b: string) {
