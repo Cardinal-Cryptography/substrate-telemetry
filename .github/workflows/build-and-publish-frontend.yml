@@ -18,7 +18,7 @@ jobs:
 
       - name: Build docker image
         run: |
-          docker build --tag substrate-telemetry-frontend -f ./frontend/Dockerfile .
+          docker build --tag substrate-telemetry-frontend -f ./frontend/Dockerfile frontend/
           docker save -o substrate-telemetry-frontend.tar substrate-telemetry-frontend
 
       - name: Save docker image as artifact
