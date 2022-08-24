@@ -1,0 +1,69 @@
+name: Build frontend artifacts
+
+on:
+  push:
+    branches: [ A0-1263-build-and-publish ] #! change to `main` before merge
+    paths:
+      - '.github/workflows/build-and-publish-frontend.yml'
+      - 'frontend/**' 
+      - '!backend/**'
+
+jobs:
+  build-docker:
+    name: Build frontend Docker image
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Source code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: |
+          docker build --tag substrate-telemetry-frontend -f ./frontend/Dockerfile .
+          docker save -o substrate-telemetry-frontend.tar substrate-telemetry-frontend
+
+      - name: Save docker image as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: substrate-telemetry-frontend-docker
+          path: substrate-telemetry-frontend.tar
+          if-no-files-found: error
+          retention-days: 1
+
+  push-docker:
+    name: Push Docker image to ECR
+    needs: [ build-docker ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Source code
+        uses: actions/checkout@v2
+
+      - name: Download docker image artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: substrate-telemetry-frontend-docker
+
+      - name: Load node docker image
+        run: docker load -i substrate-telemetry-frontend.tar
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_MAINNET_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_MAINNET_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to ECR
+        uses: docker/login-action@v1
+        with:
+          registry: 573243519133.dkr.ecr.us-east-1.amazonaws.com
+          username: ${{ secrets.AWS_MAINNET_ACCESS_KEY_ID }}
+          password: ${{ secrets.AWS_MAINNET_SECRET_ACCESS_KEY }}
+
+      - name: Push substrate-telemetry-frontend image to the private registry
+        env:
+          LOCAL_IMAGE: substrate-telemetry-frontend
+          IMAGE_TAG: $(git rev-parse --short HEAD)
+          REGISTRY: 573243519133.dkr.ecr.us-east-1.amazonaws.com/substrate-telemetry-frontend
+        run: |
+          docker tag ${{ env.LOCAL_IMAGE }} ${{ env.REGISTRY }}:${{ env.IMAGE_TAG }}
+          docker push ${{ env.REGISTRY }}:${{ env.IMAGE_TAG }}
