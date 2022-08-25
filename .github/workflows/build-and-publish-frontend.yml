@@ -2,7 +2,7 @@ name: Build frontend artifacts
 
 on:
   push:
-    branches: [ A0-1263-build-and-publish ] #! change to `main` before merge
+    branches: [ main ]
     paths:
       - '.github/workflows/build-and-publish-frontend.yml'
       - 'frontend/**' 
