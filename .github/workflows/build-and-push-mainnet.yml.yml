@@ -3,6 +3,8 @@ name: (MAINNET) Build and deploy Substrate Telemetry frontend
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ INFRA-80-telemetry-amplify ]
 
 jobs:
   build-and-push:
