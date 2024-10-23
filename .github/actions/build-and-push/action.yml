@@ -70,7 +70,7 @@ runs:
 
     - name: Build an app
       shell: bash
-      run: cd frontend/ && printenv | grep -i SUBSTRATE_ && yarn run build
+      run: cd frontend/ && printenv | grep -i SUBSTRATE_ && yarn run build && yarn cache clean
 
     - name: Compress app to ZIP file
       shell: bash
