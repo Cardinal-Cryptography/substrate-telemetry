@@ -27,6 +27,7 @@ jobs:
       - name: Build and deploy - MAINNET
         uses: ./.github/actions/build-and-push
         with:
+          node-version: "12"
           environment: mainnet
           aws-access-key-id: ${{ secrets.AWS_S3_MAINNET_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_S3_MAINNET_SECRET_ACCESS_KEY }}
